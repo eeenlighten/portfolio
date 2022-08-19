@@ -82,7 +82,8 @@
 
             const textMoveTop = document.querySelectorAll('.move_top');
             const textMoveLeft = document.querySelectorAll('.move_left');
-            const textMoveBottom = document.querySelectorAll('.move_bottom');            
+            const textMoveBottom = document.querySelectorAll('.move_bottom');         
+            const boxImg = document.querySelector('.box11 img');   
           
     
             current += ( target - current) * 0.1;
@@ -95,6 +96,7 @@
                 gsap.to(".move_top", {opacity: 1, duration: 0.5, delay:0.8, marginTop: 0, stagger: {each: 0.1, from: "random"}});
                 gsap.to(".move_left", {opacity: 1, duration:0.4, delay:0.8, marginLeft: 0, stagger: {each: 0.1, from: "random"}});
                 gsap.to(".move_bottom", {opacity: 1, duration:0.4, delay:0.8, marginBottom: 0,  stagger: {each: 0.1, from: "random"}});
+                gsap.to(".box11 img", {opacity: 1, duration:1.2, delay:1.2,});
             }
             if(current > 99.9){
                 current = 100;

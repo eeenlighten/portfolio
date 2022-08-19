@@ -371,9 +371,13 @@ li a:hover {
 }
 
 /* box11 */
+.box11 {
+    padding: 0 !important;
+}
 .box11 img {
     width: 100%;
-    height: 132%;
+    height: 100%;
+    opacity: 0;
 }
 
 /* box12 */
@@ -481,19 +485,6 @@ li a:hover {
     position: absolute;
     bottom: 25px;
     right: 40px;
-}
-/* box11 */
-.box11 {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    padding: 0 !important;
-}
-.box11 img {
-    width: 100%;
-    position: absolute;
-    top: -70px;
-    left: 0;
 }
 
 /* progress */
@@ -680,16 +671,6 @@ li a:hover {
         position: static;
     }
 
-    /* box11 */
-    .box11 {
-        border-top: 1px solid #d6d6d6;
-        background: url("../img/profile.jpg") no-repeat center center;
-        background-size: cover;
-    }
-    .box11 .snip1585 {
-        display: none;
-    }
-
     /* box12 */
     .box12 {
         border-top: 1px solid #d6d6d6;
@@ -748,8 +729,12 @@ li a:hover {
         font-size: 14vmin;
     }    
 
+    /* box11 */
+    .box11 img {
+        height: 100%;
+    }
 
-    
+
     /* box13 */
     .box13 {
         border-top: 1px solid #d6d6d6;
