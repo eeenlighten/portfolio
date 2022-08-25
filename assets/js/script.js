@@ -32,7 +32,7 @@
         window.onresize = function(event){
           event.preventDefault();
         var innerHeight = window.innerHeight;
-        innerHeight <= "800" ? resize.style.display = "block" : resize.style.display = "none";
+        innerHeight <= "850" ? resize.style.display = "block" : resize.style.display = "none";
         }        
 
         // black bar 
