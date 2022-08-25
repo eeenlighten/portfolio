@@ -27,13 +27,13 @@
         arr_ani2();
 
         // resize
-        // const resize = document.querySelector(".resize");
+        const resize = document.querySelector(".resize");
 
-        // window.onresize = function(event){
-        //   event.preventDefault();
-        // var innerHeight = window.innerHeight;
-        // innerHeight <= "800" ? resize.style.display = "block" : resize.style.display = "none";
-        // }        
+        window.onresize = function(event){
+          event.preventDefault();
+        var innerHeight = window.innerHeight;
+        innerHeight <= "800" ? resize.style.display = "block" : resize.style.display = "none";
+        }        
 
         // black bar 
         const upMove = document.querySelectorAll('.box_hover');
