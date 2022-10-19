@@ -129,11 +129,9 @@ li a:hover {
     justify-self: center;
     align-items: center;     
 }
-.box1 p {
-    font-size: 7vmax;
-    font-weight: 700;
-    font-family: 'GmarketSans';  
-    clear: both;
+.box1 li {
+    display: inline-block;
+    margin-top: 10px;
 }
 .box1 li a{
     width: 43px;
@@ -144,9 +142,8 @@ li a:hover {
     line-height: 45px;
     float: left;
     transition: 0.5s;
-    margin: 50px 0 0 9px;
 }
-.box1 li:nth-child(4) a {
+.box1 li:nth-child(5) a {
     background-color: #000;
     color: #fff;
 }

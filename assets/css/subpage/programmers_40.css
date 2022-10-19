@@ -143,7 +143,7 @@ li a:hover {
     float: left;
     transition: 0.5s;
 }
-.box1 li:nth-child(2) a {
+.box1 li:nth-child(40) a {
     background-color: #000;
     color: #fff;
 }
