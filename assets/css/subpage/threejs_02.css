@@ -8,7 +8,7 @@
     
     display: grid;
     grid-template-areas: 
-    "box1 box1 box1 box4"
+    "box1 box1 box3 box4"
     "box5 box6 box7 box7"
     "box9 box9 box7 box7"
     "box9 box9 box15 box16";
@@ -146,7 +146,7 @@ li a:hover {
     transition: 0.5s;
     margin: 50px 0 0 9px;
 }
-.box1 li:nth-child(3) a {
+.box1 li:nth-child(2) a {
     background-color: #000;
     color: #fff;
 }
@@ -192,7 +192,7 @@ li a:hover {
 .box5 .desc p:first-child {
     font-family: 'GmarketSans';
     font-weight: 300;
-    font-size: 40px;
+    font-size: 40px;   
     white-space: nowrap;
     overflow: hidden;
     cursor: pointer;
@@ -201,51 +201,13 @@ li a:hover {
     text-align: justify;
 }
 
-/* box6 */
-.box6 {
-    position: relative;
-    overflow: hidden;
-}
-.box6 .desc {
-    font-family: 'ChosunNm';     
-    -webkit-transition: margin-top .3s ease;
-    transition: margin-top .3s ease;        
-}
-.box6 .desc p:first-child {
-    font-family: 'GmarketSans';
-    font-weight: 300;
-    font-size: 40px;  
-    white-space: nowrap;
-    overflow: hidden;
-    cursor: pointer;
-}
-.box6 .desc p:last-child {
-    text-align: justify;
-}
-.box6 .desc ul {
-    margin-top: 32px;
-}
-.box6 .desc li a{
-    width: 43px;
-    height: 43px;
-    border: 1px solid #000;
-    border-radius: 50%;
-    text-align: center;
-    float: left;
-    margin-top: 4px;
-    line-height: 45px;
-    transition: 0.5s;    
-}
-.box6 .desc li:nth-child(n+2) a{
-    margin-left: 10px;
-}
-
 /* box7 */
 .box7 {
-    position: relative;    
     padding: 0 !important;
-    background: url("../../img/js1.jpg") no-repeat;  
+    background: url("../../img/threejs2.png") no-repeat center center;  
     background-size: cover;
+    overflow: auto;
+    position: relative;
 }
 .box7 pre code {
     font-family: "GmarketSans";
@@ -272,6 +234,7 @@ li a:hover {
     margin-top: 10px;
 }
 
+
 /* box15 */
 .box15 {
     position: relative;
@@ -285,7 +248,7 @@ li a:hover {
 .box15 .desc p:first-child {
     font-family: 'GmarketSans';
     font-weight: 300;
-    font-size: 40px; 
+    font-size: 40px;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -306,7 +269,7 @@ li a:hover {
 .box16 .desc p:first-child {
     font-family: 'GmarketSans';
     font-weight: 300;
-    font-size: 40px; 
+    font-size: 40px;
     white-space: nowrap;
     overflow: hidden;
 }

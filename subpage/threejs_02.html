@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>three.js</title>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css"  href="../assets/css/reset.css">
+    <link rel="stylesheet" type="text/css"  href="../assets/css/subpage/threejs_02.css">
+    <link rel="stylesheet" type="text/css"  href="../assets/css/font.css">
+    <link rel="stylesheet" type="text/css"  href="../assets/css/prism.css">
+
+</head>
+<body>
+    <!-- resize -->
+    <div class="resize">
+        <div class="resize__inner">
+          <p>전체 페이지 모드로 봐주시기 바랍니다.</p>
+        </div>
+    </div>    
+
+    <section id="container" class="contents">
+        <div class="box1 active">
+            <div class="desc">
+                <ul>
+                    <li><a href="./threejs_01.html" class="link">1</a></li>
+                    <li><a href="#" class="link">2</a></li>
+                    <li><a href="./javascript_00.html" class="link">3</a></li>
+                </ul>
+                <p><a href="../index.html" class="link">three.js</a></p>
+            </div>
+        </div>
+        <!-- //box1 -->        
+        <div class="box2 active"></div>
+        <div class="box3 active"></div>      
+        <div class="box4 active2">
+            <div class="desc">
+                <p class="arr"><a href="../index.html" class="link arr">home</a></p>
+                <a href="../index.html" class="arrow"><svg width="313" height="8" viewBox="0 0 313 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M312.354 4.35355C312.549 4.15829 312.549 3.84171 312.354 3.64645L309.172 0.464466C308.976 0.269204 308.66 0.269204 308.464 0.464466C308.269 0.659728 308.269 0.976311 308.464 1.17157L311.293 4L308.464 6.82843C308.269 7.02369 308.269 7.34027 308.464 7.53553C308.66 7.7308 308.976 7.7308 309.172 7.53553L312.354 4.35355ZM0 4.5H312V3.5H0V4.5Z" fill="black"/>
+                    </svg>
+                    </a>
+            </div>                   
+        </div>
+        <!-- //box4 -->        
+        <div class="box5 active box_hover">
+            <div class="desc">
+                <p class="view">site coding</p>
+                <p>three.js 사이트를 제작하였습니다. 클릭하시면 사용한 코드를 볼 수 있습니다.</p>
+            </div>               
+            <div class="hover_txt hover_bg"><span class="view">view</span></div>            
+        </div>
+        <!-- //box5 -->        
+        <div class="box6 active"></div>
+        <div class="box7 active site__desc">
+          <div class="tab_menu">
+            <ul class="menu">
+                <li class="tab-button trigger">Room.js</li>
+                <li class="tab-button">ThreeRoom.js</li>
+                <li class="close"><i class="fa-solid fa-xmark"></i></li>
+            </ul>
+        </div>
+        <div class="tab_code">
+<div class="show tab con1">
+<pre><code class="language-jsx">    
+
+    import * as THREE from 'three'
+    import Experience from "./Experience";
+    
+    
+    export default class Renderer{
+        constructor(){
+            this.experience = new Experience();
+            this.sizes = this.experience.sizes;
+            this.scene = this.experience.scene;
+            this.canvas = this.experience.canvas;
+            this.camera = this.experience.camera;
+            // console.log(this.camera, this.camera.perspectiveCamera)
+            this.setRenderer();
+        }
+        setRenderer(){
+            this.renderer = new THREE.WebGLRenderer({
+                canvas: this.canvas,
+                antialias: true,
+            })
+            this.renderer.physicallyCorrectLights = true;
+            this.renderer.outputEncoding = THREE.sRGBEncoding;
+            this.renderer.toneMapping = THREE.CineonToneMapping;
+            this.renderer.toneMappingExposure = 1.75;
+            this.renderer.shadowMap.enabled = true;
+            this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            this.renderer.setSize(this.sizes.width, this.sizes.height);
+            this.renderer.setPixelRatio(this.sizes.pixelRatio);
+        }
+    
+        resize(){
+            this.renderer.setSize(this.sizes.width, this.sizes.height);
+            this.renderer.setPixelRatio(this.sizes.pixelRatio);        
+        }
+    
+        update(){
+            this.renderer.render(this.scene, this.camera.perspectiveCamera);
+        }
+    }
+
+</code></pre>
+</div>    
+<div class="tab con2">
+<pre><code class="language-jsx">
+
+    import * as THREE from "three";
+
+    import Sizes from "./Utils/Sizes";
+    import Time from "./Utils/Time";
+    import Resources from "./Utils/Resources";
+    import assets from "./Utils/assets";
+    
+    import Camera from "./Camera";
+    import Renderer from "./Renderer";
+    
+    import World from "./World/World";
+    
+    export default class Experience{
+        static instance
+        constructor(canvas){
+            if(Experience.instance){
+                return Experience.instance
+            }    
+            Experience.instance = this
+            this.canvas = canvas;
+            this.scene = new THREE.Scene();
+            this.sizes = new Sizes();
+            this.time = new Time();
+            this.camera = new Camera();
+            this.renderer = new Renderer();
+            this.resources = new Resources(assets)
+            this.world = new World();
+    
+            this.sizes.on("resize", ()=>{
+                this.resize();
+            })          
+            this.time.on("update", ()=>{
+                this.update();
+            })      
+        }
+    
+        resize(){
+            this.camera.resize();
+            this.renderer.resize();
+        }
+    
+        update(){
+            this.camera.update();
+            this.renderer.update();
+        }
+    }
+    
+</code></pre>
+</div>
+            </div>      
+        </div>
+        <!-- //box7 -->
+        <div class="box8 active"></div>
+        <div class="box9 active site__desc">
+            <div class="desc">
+                <h3>camera</h3>
+                <p>PerspectiveCamera는 사람이 직접 보는 듯한 느낌을 주는 카메라이며 원근법이 적용됩니다. OrthographicCamera는 거리에 상관없이 물체가 다 똑같이 보이는 카메라입니다.</p>
+                <div class="code">
+                <pre><code class="language-jsx">
+                    createPerspectiveCamera(){
+                        this.perspectiveCamera = new THREE.PerspectiveCamera(
+                            35, 
+                            this.sizes.aspect, 
+                            0.1,
+                            1000
+                            );
+                            this.scene.add(this.perspectiveCamera)
+                            this.perspectiveCamera.position.z = 5;
+                    }
+                
+                    createOrthographicCamera(){
+                        this.frustrum = 5;
+                        this.orthographicCamera = new THREE.OrthographicCamera(
+                                (-this.sizes.aspect * this.sizes.frustrum)/2,
+                                (this.sizes.aspect * this.sizes.frustrum)/2,
+                                this.sizes.frustrum/2,
+                                -this.sizes.frustrum/2,
+                                -100,
+                                100
+                            );
+                            this.scene.add(this.orthographicCamera)
+                
+                            const size = 10;
+                            const divisions = 10;
+                
+                            const gridHelper = new THREE.GridHelper(size, divisions);
+                            this.scene.add(gridHelper);
+                
+                            const axesHelper = new THREE.AxesHelper(10);
+                            this.scene.add(axesHelper)
+                    }    
+                </code></pre>
+                </div>
+
+<h3>GLTF-Draco</h3>
+<p>glTF와 기본형식과 비슷하지만 buffer date(일반적으로 geometry)는 Draco 알고리즘을 통해 압축되며 가볍습니다.</p>
+<div class="code">
+<pre><code class="language-jsx">
+    setLoaders(){
+        this.loaders = {};
+        this.loaders.gltfLoader = new GLTFLoader();
+        this.loaders.dracoLoader = new DRACOLoader();
+        this.loaders.dracoLoader.setDecoderPath("/draco/");
+        this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
+    }  
+</code></pre>
+</div>
+            </div>
+        </div>
+        <!-- //box9 -->        
+        <div class="box10 active"></div>
+        <div class="box11 active"></div>
+        <div class="box12 active"></div>
+        <div class="box13 active"></div>
+        <div class="box14 active"></div>
+        <div class="box15 active box_hover">
+            <div class="desc">
+                <p><a href="https://github1s.com/eeenlighten/threejs-2" target="_blank">code view</a></p>
+                <p>three.js 사이트 소스를 깃을 통해 볼 수 있습니다. </p>
+            </div>   
+            <div class="hover_txt hover_bg"><a href="https://github1s.com/eeenlighten/threejs-2" target="_blank">view</a></div>                
+        </div>
+        <!-- //box15 -->        
+        <div class="box16 active2 box_hover">
+            <div class="desc">
+                <p><a href="https://threejsroom.netlify.app/" target="_blank">site view</a></p>
+                <p>netlify에 올린 파일을 직접 볼 수 있습니다.</p>
+            </div>                         
+            <div class="hover_txt hover_bg"><a href="https://threejsroom.netlify.app/" target="_blank">view</a></div>    
+        </div>
+        <!-- //box16 -->        
+    </section>
+    <!-- //section -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>    
+    <script src="../assets/js/transition.js"></script>
+    <script src="../assets/js/script.js"></script>    
+    <script src="../assets/js/prism.js"></script> 
+    <script src="https://kit.fontawesome.com/efd0a3a664.js" crossorigin="anonymous"></script>         
+</body>
+</html>
